@@ -1,42 +1,398 @@
-/* styles.css */
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #4169E1, #87CEEB);
-    color: white;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+/* Remover margens e garantir que o fundo ocupe a tela toda */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 
-  .container {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  }
+}
 
-  .contador h2 {
-    font-size: 2rem;
-    margin-top: 10px;
-  }
+.nome-casal {
+  text-align: center;
+  font-family: 'Dancing Script', cursive; /* Fonte com estilo manuscrito */
+  color: #f2f2f2; /* Cor branca com leve tom de cinza */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra suave */
+  padding: 20px;
+  border-radius: 10px;
+}
 
-  .botao {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    color: white;
-    background: #1E90FF;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
+.nome-casal h2 {
+  font-size: 3rem;
+  margin: 0;
+  position: relative;
+}
 
-  .botao:hover {
-    background: #104E8B;
+.nome-casal h2::after {
+  content: "❤️";
+  position: absolute;
+  margin-top: 15px;
+  font-size: 2rem;
+  color: #ff69b4; /* Cor rosa vibrante */
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
     transform: scale(1.1);
   }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Vídeo de fundo */
+.video-fundo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Mantém o vídeo no fundo */
+}
+
+/* Fundo com GIF */
+.gif-fundo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Mantém o GIF no fundo */
+  background-repeat: no-repeat;
+  background-size: cover; /* Ajusta o tamanho do GIF para preencher a tela */
+  background-position: center; /* Centraliza o GIF no fundo */
+}
+
+
+/* Container do carrossel */
+.carro {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  flex-direction: column; /* Empilha os elementos na vertical, se necessário */
+  max-height: 300px; /* Ajuste a altura máxima do carrossel */
+  max-width: 100%; /* Impede que ultrapasse a largura da tela */
+}
+
+/* Estilização interna do carrossel */
+.cont {
+  padding: 30px;
+  border-radius: 10px; /* Bordas arredondadas */
+  max-width: 100%; /* Limita a largura máxima */
+  text-align: center; /* Centraliza o texto */
+}
+
+/* Imagens do carrossel */
+.carro img {
+  height: 300px !important; /* Define a altura das imagens */
+  max-width: 200px !important; /* Define a largura máxima */
+  border-radius: 10px; /* Bordas arredondadas nas imagens */
+}
+
+/* Ajuste global do container */
+.container {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  margin-top: 10vh; /* Margem superior reduzida */
+}
+
+/* Estilização do carrossel */
+.carousel-inner > .carousel-item > img {
+  max-width: 100%; /* Ajusta a largura da imagem */
+  height: auto; /* Mantém a proporção */
+  object-fit: cover; /* Garante que a imagem cubra sem distorção */
+  transition: transform 1s ease; /* Suaviza a transição entre imagens */
+}
+
+/* Ícones de controle do carrossel */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro para melhor visibilidade */
+}
+
+
+/* Estilização de textos */
+
+/* h2 {
+  font-size: 23px !important;
+} */
+
+.juntos{
+  font-size: 25px !important;
+  color: white;
+  border-radius: 10px;
+  padding: 30px;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  animation: fadeIn 1s ease-in-out;
+  font-family: 'Dancing Script', cursive;
+  margin-top: -90px;
+}
+
+.titulo{
+  font-size: 15px !important;
+}
+
+.tempo{
+  font-size: 19px !important;
+}
+
+/* Botões de controle */
+
+.ampuleta{
+  width: 8%;
+}
+
+/* Centralização completa e espaçamento */
+body {
+  display: flex;
+  flex-direction: column; /* Alinha o conteúdo de forma vertical */
+}
+
+.carousel-control-prev::before,
+.carousel-control-next::before {
+  content: ''; /* Remove o conteúdo de texto padrão */
+  display: inline-block; /* Garante exibição correta */
+  width: 40px; /* Define largura */
+  height: 40px; /* Define altura */
+  background-color: rgba(255, 255, 255, 0.8); /* Fundo semitransparente */
+  color: black; /* Cor padrão da seta */
+  border-radius: 50%; /* Botão circular */
+  padding: 10px; /* Adiciona preenchimento interno */
+  text-align: center; /* Centraliza o texto */
+  line-height: 20px; /* Alinha verticalmente */
+  font-size: 20px; /* Tamanho da seta */
+  font-weight: bold; /* Peso da seta */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para profundidade */
+  transition: all 0.3s ease; /* Animação suave */
+}
+
+.carousel-control-prev::before {
+  content: '<'; /* Seta para esquerda */
+}
+
+.carousel-control-next::before {
+  content: '>'; /* Seta para direita */
+}
+
+.carousel-control-prev:hover::before,
+.carousel-control-next:hover::before {
+  background-color: rgba(0, 0, 0, 0.8); /* Fundo preto no hover */
+  color: white; /* Cor branca no hover */
+  transform: scale(1.1); /* Leve aumento no hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
+}
+
+.carousel-control-prev:active::before,
+.carousel-control-next:active::before {
+  transform: scale(0.95); /* Feedback visual no click */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduz a sombra */
+}
+
+
+.carousel-control-prev .carousel-control-prev-icon,
+.carousel-control-next .carousel-control-next-icon {
+  display: none; /* Esconde os ícones padrão do Bootstrap */
+}
+
+
+/* Suaviza a transição entre as imagens */
+.carousel-inner > .carousel-item {
+  transition: transform 1.5s ease-in-out; /* Controla a duração e suavidade */
+  transform: scale(1); /* Define o estado inicial */
+}
+
+.carousel-inner > .carousel-item-next,
+.carousel-inner > .carousel-item-prev {
+  transform: translateX(0); /* Evita movimentação abrupta */
+}
+
+.carousel-inner > .carousel-item-next,
+.carousel-inner > .carousel-item-prev {
+  transform: scale(1.1); /* Pequeno efeito de zoom durante a transição */
+}
+
+
+    .cora {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      clip-path: polygon(50% 0%, 100% 35%, 85% 100%, 50% 85%, 15% 100%, 0% 35%);
+      animation: batimento 1s infinite ease-in;
+    }
+
+    @keyframes batimento {
+      0% {
+        transform: scale(0.7);
+      }
+      50% {
+        transform: scale(1.15);
+      }
+      75% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(0.7);
+      }
+    }
+
+
+    html, body {
+      margin: 0;
+      height: 100%;
+    }
+
+    .bg_heart {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100vh;
+      height: 1000%;
+      overflow: hidden;
+      background-size: cover;
+      z-index: -1;
+    }
+
+    .container2{
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-family: cursive;
+    }
+
+    .heart {
+      position: absolute;
+      top: -50%;
+      transform: rotate(-45deg);
+    }
+
+    .heart:before,
+    .heart:after {
+      content: '';
+      position: absolute;
+      background: inherit;
+      border-radius: 50%;
+    }
+
+    .heart:before {
+      top: -50%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .heart:after {
+      top: 0;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+    }
+
+    @keyframes love {
+      0% { top: 110%; }
+    }
+
+
+    .romantic-card {
+      /* Contêiner principal */
+      background: linear-gradient(to bottom right, #000d57, #0d1975);
+      color: white;
+      border: 2px solid white;
+      border-radius: 10px;
+      box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+      padding: 30px;
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      animation: fadeIn 1s ease-in-out;
+      margin-top: -50px;
+    }
+
+    /* Fonte personalizada */
+    .romantic-card p {
+      font-family: 'Dancing Script', cursive;
+      font-size: 25px;
+      line-height: 1.5;
+    }
+
+    /* Efeito de coração pulsante */
+    .heart {
+      font-size: 24px;
+      animation: pulse 1s infinite;
+    }
+
+    /* Animações */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Adicione um toque especial: um fundo estrelado */
+    .romantic-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, #000000, #1c2331);
+      background-size: cover;
+      opacity: 0.2;
+      z-index: -1;
+      filter: blur(2px);
+    }
+
+
+.caixa-carta{
+  text-align: center;
+  margin-bottom: -45px;
+}
+
+.caixa-carta img{
+  width: 100px;
+  height: 100px;
+}
+
+
+.flor{
+  text-align: center;
+  align-items: center;
+
+}
+.flor img{
+  width: 200px;
+  text-align: center;
+  align-items: center;
+
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animação Cartoon de Chuva de Meteoros</title>
+    <link rel="stylesheet" href="carta.css" />
+    <link rel="stylesheet" href="meteroro.css" />
+  </head>
+  <body>
+    <p>voltar</p>
+    <div class="envelop">
+      <div class="envelop__front-paper"></div>
+      <div class="envelop__back-paper"></div>
+      <div class="envelop__up-paper js-up-paper"></div>
+      <div class="envelop__sticker js-sticker"></div>
+      <div class="envelop__false-sticker"></div>
+      <div class="envelop__content js-envelop-content">
+        <div class="love-notes">
+          <div class="note js-note">
+            <div class="note__text">
+              <p>
+                Saiba que as palavras que escrevi não foram genéricas ou da boca
+                pra fora, elas carregam uma visão que eu tenho de você e, mesmo
+                que você mude, vou guardar essa visão num cantinho especial.
+              </p>
+            </div>
+          </div>
+          <div class="note js-note">
+            <div class="note__text">
+              <p>
+                Enfim… você faz diferença na minha vida (e de muitas pessoas) de
+                um jeito que é difícil de explicar com palavras, mas tentei 😅.
+                Só queria que soubesse que eu valorizo muito você e todos os
+                momentos legais que a gente troca.
+              </p>
+            </div>
+          </div>
+
+          <div class="note js-note">
+            <div class="note__text">
+              <p style="font-size: 10px">
+                <img
+                  style="
+                    font-weight: 80px;
+                    margin-top: -28px;
+                    margin-bottom: -68px;
+                    font-size: 10px;
+                  "
+                  src="rosa4.png"
+                  alt=""
+                />
+              </p style="font-size: 10px;!important">
+
+              <p>
+               01010100 01100101 00100000 <br>01100001 01101101 01101111 <br> 00100000 01101101 01110101<br> 01101001 01110100<br> 01101111
+
+                &hearts;.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="carta.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <script src="carta.js"></script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animação Cartoon de Chuva de Meteoros</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: radial-gradient(circle, #1b2735, #090a0f);
+        background-color: #090a0f;
+      }
+
+      .star {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.8;
+      }
+
+      .meteor {
+        position: absolute;
+        width: 4px; /* Largura do meteoro aumentada para estilo cartoon */
+        height: 80px;
+        background: linear-gradient(
+          to top,
+          rgba(255, 255, 255, 1),
+          rgba(255, 255, 255, 0)
+        );
+        border-radius: 50%; /* Para uma ponta arredondada */
+        transform: rotate(-45deg);
+        opacity: 0.9;
+        animation: fall linear;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translate(0, 0) rotate(-45deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(100vw, 100vh) rotate(-45deg);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const NUM_STARS = 1000;
+      const METEOR_INTERVAL = 50; // Intervalo em milissegundos entre meteoros
+
+      // Função para criar estrelas no fundo
+      const createStars = () => {
+        for (let i = 0; i < NUM_STARS; i++) {
+          const star = document.createElement("div");
+          star.classList.add("star");
+          star.style.left = `${Math.random() * 100}vw`;
+          star.style.top = `${Math.random() * 100}vh`;
+          star.style.opacity = Math.random();
+          star.style.transform = `scale(${Math.random()})`;
+          document.body.appendChild(star);
+        }
+      };
+
+      // Função para criar um meteoro
+      const createMeteor = () => {
+        const meteor = document.createElement("div");
+        meteor.classList.add("meteor");
+
+        // Posição inicial aleatória fora da tela
+        // Posição inicial aleatória ao longo das bordas superiores ou laterais
+        const spawnSide = Math.random(); // Número aleatório entre 0 e 1 para decidir o lado de spawn
+        let startX, startY;
+
+        if (spawnSide < 0.5) {
+          // 50% de chance de começar na borda superior
+          startX = Math.random() * window.innerWidth; // Qualquer posição horizontal
+          startY = -50; // Um pouco acima da tela
+        } else {
+          // 50% de chance de começar na lateral esquerda
+          startX = -50; // Um pouco à esquerda da tela
+          startY = Math.random() * window.innerHeight; // Qualquer posição vertical
+        }
+
+        meteor.style.left = `${startX}px`;
+        meteor.style.top = `${startY}px`;
+
+        // Duração e tamanho aleatórios para variação
+        const duration = Math.random() * 1.5 + 0.5; // Entre 0.5s e 2s
+        const length = Math.random() * 60 + 40; // Entre 40px e 100px
+        meteor.style.animationDuration = `${duration}s`;
+        meteor.style.height = `${length}px`;
+
+        // Adiciona cores vibrantes ao meteoro (estilo cartoon)
+        const colors = ["#FFFFF"];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        meteor.style.background = `linear-gradient(to top, ${randomColor}, rgba(255, 255, 255, 0))`;
+        meteor.style.boxShadow = `0 0 100px ${randomColor}`;
+
+        document.body.appendChild(meteor);
+
+        // Remover meteoro após a animação
+        setTimeout(() => {
+          meteor.remove();
+        }, duration * 1000);
+      };
+
+      // Inicializar estrelas
+      createStars();
+
+      // Gerar meteoros continuamente
+      setInterval(createMeteor, METEOR_INTERVAL);
+    </script>
+  </body>
+</html>

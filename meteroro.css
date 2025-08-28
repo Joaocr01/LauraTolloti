@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background: radial-gradient(circle, #1b2735, #090a0f);
+    background-color: #090a0f;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    z-index: -1; /* Estrelas ficam por baixo */
+}
+
+.meteor {
+    position: absolute;
+    width: 4px; /* Largura do meteoro aumentada para estilo cartoon */
+    height: 80px;
+    background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    border-radius: 50%; /* Para uma ponta arredondada */
+    transform: rotate(-45deg);
+    opacity: 0.9;
+    animation: fall linear;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+    z-index: -1; /* Estrelas ficam por baixo */
+}
+
+@keyframes fall {
+    0% {
+        transform: translate(0, 0) rotate(-45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(100vw, 100vh) rotate(-45deg);
+        opacity: 0;
+    }
+}
