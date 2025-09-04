@@ -326,10 +326,10 @@ window.addEventListener('load', () => {
     popup.style.display = 'none'; // esconde popup
     audio.play().then(() => {
       let volume = 0;
-      const maxVolume = 0.5; // <<< volume máximo desejado (50%)
+      const maxVolume = 0.3; // <<< volume máximo desejado (50%)
       const fadeIn = setInterval(() => {
         if (volume < maxVolume) {
-          volume += 0.02; // aumenta suavemente
+          volume += 0.01; // aumenta suavemente
           if (volume > maxVolume) volume = maxVolume;
           audio.volume = volume;
         } else {
