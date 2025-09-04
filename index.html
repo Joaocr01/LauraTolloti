@@ -320,22 +320,23 @@ window.addEventListener('load', () => {
   const closeBtn = document.getElementById('closePopup');
   const audio = new Audio('musica.mp3');
   audio.loop = true;
-  audio.volume = 0; // começa mudo
 
   closeBtn.addEventListener('click', () => {
     popup.style.display = 'none'; // esconde popup
+
+    audio.volume = 0.01; // <<< força começar baixinho antes do play()
     audio.play().then(() => {
-      let volume = 0;
-      const maxVolume = 0.3; // <<< volume máximo desejado (50%)
+      let volume = audio.volume;
+      const maxVolume = 0.5; // volume máximo desejado
       const fadeIn = setInterval(() => {
         if (volume < maxVolume) {
-          volume += 0.01; // aumenta suavemente
+          volume += 0.02; // sobe aos poucos
           if (volume > maxVolume) volume = maxVolume;
           audio.volume = volume;
         } else {
           clearInterval(fadeIn);
         }
-      }, 1000); // mais rápido ou lento conforme quiser
+      }, 150);
     }).catch(err => console.log("Autoplay bloqueado", err));
   });
 });
