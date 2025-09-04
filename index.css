@@ -328,6 +328,8 @@ body {
       line-height: 1.5;
     }
 
+
+
     /* Efeito de coração pulsante */
     .heart {
       font-size: 24px;
@@ -395,4 +397,146 @@ body {
   text-align: center;
   align-items: center;
 
+}
+
+.videofundo {
+  position: fixed; /* fixa no fundo da tela */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; /* fica atrás de tudo */
+}
+
+.video-fundo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* garante que fique atrás da overlay */
+}
+
+.overlay {
+  position: fixed; /* fixo junto com a tela */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s linear;
+  z-index: 0; /* acima do vídeo, mas abaixo do conteúdo */
+}
+
+/*degrade carta */
+
+.container-carta {
+  position: relative;
+  width: 100%;
+  height: 600px;
+}
+
+.container-carta iframe {
+  border: none;
+  z-index: 1;
+}
+
+.container-carta::before,
+.container-carta::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.container-carta::before {
+  top: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1),  /* preto total no topo */
+    rgba(0, 0, 0, 0)   /* transparente no final do degrade */
+  );
+}
+
+.container-carta::after {
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1),       /* preto total na parte inferior */
+    rgba(255,182,193,0)     /* rosa transparente no final */
+  );
+}
+
+
+.container-rosa {
+  position: relative;
+  width: 100%;
+  height: 600px;
+}
+
+.container-rosa iframe {
+  border: none;
+  z-index: 1;
+}
+
+.container-rosa::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.container-rosa::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.container-rosa::before {
+  top: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1),  /* preto total no topo */
+    rgba(0, 0, 0, 0)   /* transparente no final do degrade */
+  );
+}
+
+.container-rosa::after {
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1),       /* preto total na parte inferior */
+    rgba(255,182,193,0)     /* rosa transparente no final */
+  );
+}
+
+
+/* degrade */
+.top-shadow {
+  width: 100%;                       /* cobre toda a largura */
+  height: 200px;                     /* altura da sombra, pode aumentar ou diminuir */
+  background: linear-gradient(
+    to bottom,                       /* degrade de cima para baixo */
+    rgba(0, 0, 0, 0.8),              /* começa escuro */
+    rgba(0, 0, 0, 0)                 /* termina transparente */
+  );
+  position: absolute;                /* posiciona sobre o conteúdo */
+  top: 0;                            /* começa no topo */
+  left: 0;
+  pointer-events: none;              /* deixa clique passar */
+  z-index: 10;                       /* acima do conteúdo */
 }

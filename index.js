@@ -104,3 +104,13 @@ setTimeout(() => {
 bgHeart.removeChild(heart);
 }, rTime * 1000);
 }, 500);
+
+window.addEventListener('scroll', () => {
+  const overlay = document.querySelector('.overlay');
+  const scrollTop = window.scrollY;
+  const maxScroll = document.body.scrollHeight - window.innerHeight;
+
+  let opacity = scrollTop / maxScroll; // quanto mais rolar, mais escuro
+  if(opacity > 1) opacity = 1;         // limite de 1
+  overlay.style.opacity = opacity;
+});

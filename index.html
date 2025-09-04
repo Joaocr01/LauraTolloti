@@ -21,18 +21,33 @@
   <title>Laura Tolotti</title>
 </head>
 <body>
-<div class="videofundo" >
-     <video autoplay loop muted playsinline class="video-fundo">
-      <source src="./1733275450 (1) (1).mp4" type="video/mp4" />
-    </video>
-  </div>
+<div class="videofundo">
+  <video autoplay loop muted playsinline class="video-fundo">
+    <source src="./1733275450 (1) (1).mp4" type="video/mp4" />
+  </video>
+  <div class="overlay"></div>
+</div>
+<script>
+  window.addEventListener('scroll', () => {
+  const overlay = document.querySelector('.overlay');
+  const scrollTop = window.scrollY;
+  const maxScroll = document.body.scrollHeight - window.innerHeight;
+
+  let opacity = (scrollTop / maxScroll) * 2.5; // escurece 2x mais rápido
+if(opacity > 1) opacity = 1; // não passa de 1
+
+
+  overlay.style.opacity = opacity;
+});
+
+</script>
+
 
   <div class="nome-casal" >
     <h2>Laura Ferreira Tolloti</span></h2>
 
   </div>
 
-    <!-- Frase romântica -->
     <div class="container">
       <h1 class="juntos"></h1>
 
@@ -102,18 +117,135 @@
 
 
     <div class="romantic-card">
-      <p>Nunca se esqueça do quanto você é incrível, do quanto já conquistou e do quanto ainda vai conquistar. Pode contar comigo sempre, seja nos momentos bons ou nos mais difíceis. Obrigado por ser quem você é — inteligente, dedicada, especial, e acima de tudo, uma pessoa que faz toda a diferença na vida de quem tem a sorte de te conhecer.<span class="hear">🥰</span>
+      <p>Nunca se esqueça do quanto você é incrível, do quanto já conquistou e do quanto ainda vai conquistar. Pode contar comigo sempre, seja nos momentos bons ou nos mais difíceis. Obrigado por ser quem você é inteligente, dedicada, especial, e acima de tudo, uma pessoa que faz toda a diferença na vida de quem tem a sorte de te conhecer.<span class="hear">🥰</span>
       </p>
-      <div class="caixa-carta">
+      <!-- <div class="caixa-carta">
                   <p style="font-size: 15px;">Clique aqui</p>
         <a href="./carta.html" target="_blank">
           <img style="margin-top: -25px;" src="carta.gif" alt="Carta">
 
         </a>
-      </div>
+                <a href="./rosa.html" target="_blank">
+          <img style="margin-top: -25px;" src="carta.gif" alt="Carta">
+
+        </a>
+      </div> -->
 
 
     </div>
+      <script>
+    window.addEventListener('load', () => {
+      const audio = new Audio('musica.mp3');
+      audio.loop = true; // repetir a música
+      audio.play().catch(() => {
+        console.log('O navegador bloqueou o autoplay. Clique para iniciar o áudio.');
+        // criar um botão para o usuário iniciar o áudio
+        const btn = document.createElement('button');
+        btn.textContent = 'Tocar Música';
+        btn.onclick = () => audio.play();
+        document.body.appendChild(btn);
+      });
+    });
+  </script>
+<br><br><br><br><br><br><br><br><br><br> <br><br><br><br><br><br><br><br><br><br>
+
+<!-- Animação de titulo p -->
+ <div style="text-align: center;">
+<p class="animated-text">Teste de texto</p>
+ </div>
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+.animated-text {
+  font-family: 'Comic Neue', cursive; /* fonte cartoon */
+  color: white;                       /* cor branca */
+  font-size: 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+/* Classe ativada com delay */
+.animated-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1.0s; /* demora meio segundo antes de animar */
+}
+.animated-text p{
+  text-align: center !important;
+}
+</style>
+
+<script>
+const observer1 = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible'); // entra animação
+    } else {
+      entry.target.classList.remove('visible'); // reseta animação ao sair da tela
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.animated-text').forEach(el => {
+  observer1.observe(el);
+});
+</script>
+<!-- Final -->
+<div class="container-carta">
+
+  <iframe src="carta.html" width="100%" height="600px" style="border:none; background:transparent;"></iframe>
+</div>
+<br><br><br>
+<!-- Animação de titulo p -->
+ <div style="text-align: center;">
+<p class="animated-text">Teste de texto</p>
+ </div>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+.animated-text {
+  font-family: 'Comic Neue', cursive; /* fonte cartoon */
+  color: white;                       /* cor branca */
+  font-size: 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+/* Classe ativada com delay */
+.animated-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1.0s; /* demora meio segundo antes de animar */
+}
+</style>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible'); // entra animação
+    } else {
+      entry.target.classList.remove('visible'); // reseta animação ao sair da tela
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.animated-text').forEach(el => {
+  observer.observe(el);
+});
+</script>
+<!-- Final -->
+
+
+<div class="container-rosa">
+  <iframe src="rosa.html" width="100%" height="600px" style="border:none; background:transparent;"></iframe>
+</div>
+
     <p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
 
     <div class="bg_heart container2"></div>
@@ -129,6 +261,101 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="index.js"></script>
+
+    <!-- POPUP -->
+<div id="popup" class="popup-overlay">
+  <div class="popup-content">
+    <h2>✨ Feito para eternizar sua carta ✨</h2>
+    <p>Este site foi criado especialmente para tornar este momento inesquecível. 💌</p>
+    <button id="closePopup">OK</button>
+  </div>
+</div>
+
+<style>
+/* Estilo do popup */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-content {
+  background: #fff;
+  color: #333;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 350px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  font-family: 'Comic Neue', cursive;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.popup-content h2 {
+  margin-bottom: 10px;
+}
+
+.popup-content p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+#closePopup {
+  background-color: #ff4081;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#closePopup:hover {
+  background-color: #e91e63;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+</style>
+
+<script>
+window.addEventListener('load', () => {
+  const popup = document.getElementById('popup');
+  const closeBtn = document.getElementById('closePopup');
+  const audio = new Audio('musica.mp3');
+  audio.loop = true;
+  audio.volume = 0; // começa mudo
+
+  closeBtn.addEventListener('click', () => {
+    popup.style.display = 'none'; // esconde popup
+    audio.play().then(() => {
+      let volume = 0;
+      const maxVolume = 0.5; // <<< volume máximo desejado (50%)
+      const fadeIn = setInterval(() => {
+        if (volume < maxVolume) {
+          volume += 0.02; // aumenta suavemente
+          if (volume > maxVolume) volume = maxVolume;
+          audio.volume = volume;
+        } else {
+          clearInterval(fadeIn);
+        }
+      }, 950); // mais rápido ou lento conforme quiser
+    }).catch(err => console.log("Autoplay bloqueado", err));
+  });
+});
+</script>
+
+
 
 </body>
 </html>
