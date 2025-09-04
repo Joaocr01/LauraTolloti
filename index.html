@@ -133,20 +133,6 @@ if(opacity > 1) opacity = 1; // não passa de 1
 
 
     </div>
-      <script>
-    window.addEventListener('load', () => {
-      const audio = new Audio('musica.mp3');
-      audio.loop = true; // repetir a música
-      audio.play().catch(() => {
-        console.log('O navegador bloqueou o autoplay. Clique para iniciar o áudio.');
-        // criar um botão para o usuário iniciar o áudio
-        const btn = document.createElement('button');
-        btn.textContent = 'Tocar Música';
-        btn.onclick = () => audio.play();
-        document.body.appendChild(btn);
-      });
-    });
-  </script>
 <br><br><br><br><br><br><br><br><br><br> <br><br><br><br><br><br><br><br><br><br>
 
 <!-- Animação de titulo p -->
