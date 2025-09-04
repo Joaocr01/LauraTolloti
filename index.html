@@ -323,24 +323,20 @@ window.addEventListener('load', () => {
 
   closeBtn.addEventListener('click', () => {
     popup.style.display = 'none'; // esconde popup
+    audio.play().catch(err => console.log("Autoplay bloqueado", err));
+  });
 
-    audio.volume = 0.01; // <<< força começar baixinho antes do play()
-    audio.play().then(() => {
-      let volume = audio.volume;
-      const maxVolume = 0.5; // volume máximo desejado
-      const fadeIn = setInterval(() => {
-        if (volume < maxVolume) {
-          volume += 0.01; // sobe aos poucos
-          if (volume > maxVolume) volume = maxVolume;
-          audio.volume = volume;
-        } else {
-          clearInterval(fadeIn);
-        }
-      }, 950);
-    }).catch(err => console.log("Autoplay bloqueado", err));
+  // Pausa quando a aba não está visível
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      audio.pause(); // pausa se ela sair da aba ou minimizar
+    } else {
+      audio.play().catch(err => console.log("Autoplay bloqueado", err)); // volta a tocar quando voltar
+    }
   });
 });
 </script>
+
 
 
 
