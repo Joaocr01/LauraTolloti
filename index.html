@@ -330,13 +330,13 @@ window.addEventListener('load', () => {
       const maxVolume = 0.5; // volume máximo desejado
       const fadeIn = setInterval(() => {
         if (volume < maxVolume) {
-          volume += 0.02; // sobe aos poucos
+          volume += 0.01; // sobe aos poucos
           if (volume > maxVolume) volume = maxVolume;
           audio.volume = volume;
         } else {
           clearInterval(fadeIn);
         }
-      }, 150);
+      }, 950);
     }).catch(err => console.log("Autoplay bloqueado", err));
   });
 });
