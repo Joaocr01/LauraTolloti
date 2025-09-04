@@ -338,6 +338,13 @@ window.addEventListener('load', () => {
   });
 });
 </script>
+<script>
+document.addEventListener('gesturestart', function (e) {
+  e.preventDefault(); // bloqueia o gesto de zoom
+  document.body.style.zoom = "100%"; // força voltar ao tamanho normal
+});
+</script>
+
 
 
 
