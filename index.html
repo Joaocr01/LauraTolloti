@@ -5,6 +5,8 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.9/dayjs.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.9/plugin/utc.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.9/plugin/timezone.min.js"></script>
@@ -23,6 +25,7 @@
   <title>Laura Tolotti</title>
 </head>
 <body>
+
 <div class="videofundo">
 <video autoplay loop muted playsinline webkit-playsinline
        class="video-fundo"
@@ -393,6 +396,27 @@ document.addEventListener('gesturestart', function (e) {
 }
 </style>
 
+<style>
+/* Impede zoom via teclado e duplo clique */
+body {
+  touch-action: manipulation; /* bloqueia gestos de zoom em alguns navegadores */
+}
+</style>
+
+<script>
+// Bloqueia zoom via gesto em dispositivos que ainda permitem
+document.addEventListener('gesturestart', function (e) {
+  e.preventDefault();
+  document.body.style.zoom = "100%";
+});
+
+// Bloqueia zoom com Ctrl + scroll no desktop
+window.addEventListener('wheel', function (e) {
+  if (e.ctrlKey) {
+    e.preventDefault();
+  }
+}, { passive: false });
+</script>
 
 
 </body>
