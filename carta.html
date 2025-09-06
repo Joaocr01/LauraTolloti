@@ -10,7 +10,9 @@
   </head>
   <body>
     <p>voltar</p>
+
     <div class="envelop">
+
       <div class="envelop__front-paper"></div>
       <div class="envelop__back-paper"></div>
       <div class="envelop__up-paper js-up-paper"></div>
@@ -29,10 +31,10 @@
 <div class="note js-note">
 <div class="note__text">
 <p>
-  Espero que tenha entendido a mensagem. Só queria que soubesse que você é
+  Espero que tenha entendido a mensagem 😅. Só queria que soubesse que você é
   importante pra mim e que eu curto muito os momentos que a gente passa junto.
 </p>
-
+</div>
           </div>
 
           <div class="note js-note">
@@ -75,12 +77,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Carta Laura</title>
     <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-        background: radial-gradient(circle, #1b2735, #090a0f);
-        background-color: #090a0f;
-      }
+body {
+  margin: 0;
+  overflow: hidden;
+  background: radial-gradient(circle, #1b2735, #090a0f);
+  background-color: #090a0f;
+  min-height: 100vh; /* Garante que ocupe pelo menos a altura da tela */
+  height: auto;
+  padding: 20px 0; /* Adiciona espaço acima e abaixo */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centraliza verticalmente */
+}
 
       .star {
         position: absolute;
