@@ -29,12 +29,27 @@
 <div class="videofundo">
 <video autoplay loop muted playsinline webkit-playsinline
        class="video-fundo"
-       controlslist="nodownload nofullscreen noremoteplayback">
+       controlslist="nodownload nofullscreen noremoteplayback"
+       disablepictureinpicture>
   <source src="./1733275450 (1) (1).mp4" type="video/mp4" />
 </video>
 
   <div class="overlay"></div>
 </div>
+
+<script>
+// Garante que o vídeo dê play mesmo que o navegador bloqueie o autoplay
+document.addEventListener('DOMContentLoaded', () => {
+  const video = document.querySelector('.video-fundo');
+  video.play().catch(() => {
+    // Se não deu autoplay, espera primeiro clique do usuário
+    document.body.addEventListener('click', () => {
+      video.play();
+    }, { once: true });
+  });
+});
+</script>
+
 <script>
   window.addEventListener('scroll', () => {
   const overlay = document.querySelector('.overlay');
@@ -274,6 +289,36 @@ document.querySelectorAll('.animated-text').forEach(el => {
     <button id="closePopup">OK</button>
   </div>
 </div>
+<style>
+/* Impede zoom via teclado e duplo clique */
+body, .popup-overlay {
+  touch-action: manipulation; /* bloqueia gestos de zoom em navegadores compatíveis */
+}
+</style>
+
+<script>
+// Bloqueia pinch zoom (iOS/Android)
+document.addEventListener('gesturestart', function (e) {
+  e.preventDefault();
+  document.body.style.zoom = "100%";
+});
+
+// Bloqueia zoom no popup também
+document.querySelectorAll('.popup-overlay').forEach(el => {
+  el.addEventListener('gesturestart', function (e) {
+    e.preventDefault();
+    el.style.zoom = "100%";
+  });
+});
+
+// Bloqueia zoom com Ctrl + scroll no desktop
+window.addEventListener('wheel', function (e) {
+  if (e.ctrlKey) {
+    e.preventDefault();
+  }
+}, { passive: false });
+</script>
+
 
 <style>
 /* Estilo do popup */
