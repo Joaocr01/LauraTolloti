@@ -137,10 +137,7 @@ if(opacity > 1) opacity = 1; // não passa de 1
     </div>
 <br><br><br><br><br><br><br><br><br><br> <br><br><br><br><br><br><br><br><br><br>
 
-<!-- Animação de titulo p -->
- <div style="text-align: center;">
-<p class="animated-text">Abra a Carta</p>
- </div>
+
 
 
 <style>
@@ -182,13 +179,22 @@ document.querySelectorAll('.animated-text').forEach(el => {
 });
 </script>
 <!-- Final -->
+
+ <div class="container-baixo"><p></p></div>
  <div class="container-rosa" style="height: 900px;"></div>
 <div class="container-carta">
 
   <iframe src="carta.html" width="100%" height="900px" style="border:none; background:transparent;"></iframe>
+  <!-- Animação de titulo p -->
 </div>
+
+<br><br><br><br>
+ <div style="text-align: center;">
+<p  class="animated-text">Abra a Carta</p>
+ </div>
+
 <br><br><br>
- <div class="container-rosa" style="height: 900px;"></div>
+<div class="container-baixo"><p></p></div>
 <!-- Animação de titulo p -->
 
 
@@ -229,19 +235,24 @@ document.querySelectorAll('.animated-text').forEach(el => {
 </script>
 <!-- Final -->
 
-
 <div class="container-rosa">
   <iframe src="rosa.html" width="100%" height="800px" style="border:none; background:transparent;"></iframe>
 </div>
+<div class="gradiente"><p></p> </div>
+  <br><br><br>
 
     <div class="bg_heart container2"></div>
     <div class="container2">
       <h2 id="text1"></h2>
     </div>
+
 <div class="container-risa"></div>
 
   <script src="index.js" ></script>
+<br><br><br><br>
+
     </body>
+
 
     </html>
 
@@ -343,7 +354,8 @@ document.addEventListener('gesturestart', function (e) {
   document.body.style.zoom = "100%"; // força voltar ao tamanho normal
 });
 </script>
-<!--
+
+
 
 <div class="linkcarta">
 <a href="ete.html">
@@ -356,34 +368,27 @@ document.addEventListener('gesturestart', function (e) {
 
 
 <style>
-  /* Centraliza o link e o conteúdo */
-  a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+/* Centraliza a imagem no div */
+.linkcarta {
+  text-align: center;
+  background: #122139;
+}
+
+/* Estilo padrão para desktop */
+.linkcarta img {
+  width: 20%;      /* imagem menor no desktop */
+  height: auto;
+  display: inline-block;
+}
+
+/* Estilo para dispositivos móveis */
+@media (max-width: 768px) { /* para telas até 768px, típico celular/tablet */
+  .linkcarta img {
+    width: 80%;  /* ocupa mais espaço no celular */
+    height: auto;
   }
-
-  /* Define tamanho da imagem */
-    /* Centraliza apenas a imagem dentro do div */
-  .cartaimg {
-    text-align: center; /* centraliza horizontalmente */
-  }
-
-  .cartaimg img {
-    width: 20%;   /* reduz para 20% do tamanho original */
-    height: auto; /* mantém proporção */
-    display: inline-block; /* garante que funcione com text-align */
-  }
-  .linkcarta{
-  align-items: center;
-
-  }
-
-  /* Opcional: centraliza verticalmente se quiser que fique no meio da página */
-</style> -->
-
-
+}
+</style>
 
 
 

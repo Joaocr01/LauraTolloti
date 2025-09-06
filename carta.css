@@ -5,18 +5,15 @@
 }
 
 .envelop {
+  position: relative;
+  margin: 0 auto;
   width: 15rem;
   height: 10rem;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 15rem;
-  height: 10rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  /* Remova as propriedades de posicionamento absoluto anteriores */
+  left: auto;
+  right: auto;
+  top: auto;
+  transform: none;
 }
 @media (min-width: 400px) and (max-width: 600px) {
   .envelop {

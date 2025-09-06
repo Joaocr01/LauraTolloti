@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="meteroro.css" />
   </head>
   <body>
-    <p>voltar</p>
 
     <div class="envelop">
 
@@ -78,18 +77,16 @@
     <title>Carta Laura</title>
     <style>
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   margin: 0;
   overflow: hidden;
   background: radial-gradient(circle, #1b2735, #090a0f);
-  background-color: #090a0f;
-  min-height: 100vh; /* Garante que ocupe pelo menos a altura da tela */
-  height: auto;
-  padding: 20px 0; /* Adiciona espaço acima e abaixo */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Centraliza verticalmente */
+  padding: 20px;
+  box-sizing: border-box;
 }
-
       .star {
         position: absolute;
         width: 2px;
